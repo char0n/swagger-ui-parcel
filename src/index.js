@@ -1,7 +1,8 @@
-import SwaggerUI from 'swagger-ui/dist/swagger-ui-es-bundle';
-import 'swagger-ui/dist/swagger-ui.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import SwaggerUI from 'swagger-ui-react';
+import 'swagger-ui-react/swagger-ui.css';
 
-globalThis.swaggerUIInstance = SwaggerUI({
-  url: 'https://petstore.swagger.io/v2/swagger.json',
-  dom_id: '#swagger-ui'
-});
+const container = document.getElementById('swagger-ui');
+
+ReactDOM.render(<SwaggerUI url="https://petstore.swagger.io/v2/swagger.json" />, container);

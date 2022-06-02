@@ -6,10 +6,23 @@
     "start": "parcel",
     "build": "parcel build"
   },
+  "type": "module",
   "devDependencies": {
-    "parcel": "latest"
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "parcel": "latest",
+    "process": "^0.11.10",
+    "querystring-es3": "^0.2.1",
+    "stream-browserify": "^3.0.0"
   },
   "dependencies": {
-    "swagger-ui": "^4.11.1"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "swagger-ui": "=4.11.1",
+    "swagger-ui-react": "=4.11.1"
+  },
+  "alias": {
+    "./node_modules/swagger-ui-react/index.js": "./node_modules/swagger-ui-react/commonjs.js",
+    "./node_modules/swagger-ui-react/swagger-ui-es-bundle-core.js": "./node_modules/swagger-ui/dist/swagger-ui.js"
   }
 }
