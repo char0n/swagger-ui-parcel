@@ -1,4 +1,4 @@
-import SwaggerUI from 'swagger-ui/dist/swagger-ui-es-bundle';
+import SwaggerUI from 'swagger-ui';
 import 'swagger-ui/dist/swagger-ui.css';
 
 globalThis.swaggerUIInstance = SwaggerUI({

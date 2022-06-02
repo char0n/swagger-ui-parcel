@@ -7,9 +7,17 @@
     "build": "parcel build"
   },
   "devDependencies": {
-    "parcel": "latest"
+    "buffer": "^6.0.3",
+    "events": "^3.3.0",
+    "parcel": "latest",
+    "process": "^0.11.10",
+    "querystring-es3": "^0.2.1",
+    "stream-browserify": "^3.0.0"
   },
   "dependencies": {
     "swagger-ui": "^4.11.1"
+  },
+  "alias": {
+    "./node_modules/swagger-ui/dist/swagger-ui-es-bundle-core.js": "./node_modules/swagger-ui/dist/swagger-ui.js"
   }
 }
