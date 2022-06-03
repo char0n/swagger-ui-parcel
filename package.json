@@ -1,7 +1,21 @@
 {
   "name": "parcel-swagger-ui",
-  "source": "src/index.html",
-  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "parcel-swagger-ui": "dist/index.html",
+  "targets": {
+    "parcel-swagger-ui": {
+      "context": "browser",
+      "outputFormat": "global",
+      "scopeHoist": false,
+      "isLibrary": false,
+      "optimize": true,
+      "includeNodeModules": true,
+      "sourceMap": true,
+      "source": "src/index.html",
+      "engines": {
+        "browsers": "> 0.5%, last 2 versions, not dead"
+      }
+    }
+  },
   "scripts": {
     "start": "parcel",
     "build": "parcel build"
