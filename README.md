@@ -41,6 +41,19 @@ following Parcel.js alias needs to provided in `package.json`:
 Using this setup we avoid using modern ESM distribution fragments and instead
 fallback to CommonJS which consistently works with Parcel.js.
 
+## Support for package.json `exports` field
+
+Parcel.js doesn't support package.json [exports](https://nodejs.org/api/packages.html#package-entry-points) field [by default](https://parceljs.org/blog/v2-9-0/#new-resolver). It needs to be enabled
+explicitly. This can be done by adding the following to your project root package.json:
+
+```json
+{
+  "@parcel/resolver-default": {
+    "packageExports": true
+  }
+}
+```
+
 ## CSS
 
 **swagger-ui.css** contains single character that Parcel just don't like.
