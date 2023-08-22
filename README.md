@@ -1,4 +1,4 @@
-# Using Parcel to build SwaggerUI
+# Using Parcel to build swagger-ui-react
 
 ## JavaScript
 
@@ -29,32 +29,40 @@ Related issues:
 - https://github.com/parcel-bundler/parcel/issues/5459
 - https://github.com/thangngoc89/bs-ant-design/issues/21
 
-To resolve the issue with the latest version of `swagger-ui-react@4.11.1`, matching
-version of `swagger-ui@4.11.1` needs to be installed as well and following
-Parcel.js aliases need to provided in `package.json`:
+Another issue seems to be with package.json [imports](https://nodejs.org/api/packages.html#imports field.
+Parcel.js doesn't handle imports fields correctly when in CommonJS context.
+Because of this fact, we need to utilize a `postinstall` npm scripts which replaces `#swagger-ui`
+for `$swagger-ui` in `swagger-ui-react` main entry point. `$swagger-ui` is something
+that is supported by Parcel.js aliasing (strings starting with `#` are not).
+
+Related issues:
+- https://github.com/parcel-bundler/parcel/issues/4155#issuecomment-1687884414
+
+To resolve both above-mentioned issues with the latest version of `swagger-ui-react@5.4.2`, 
+`postinstall` script is automatically executed with every `npm install` and following aliases needs
+to be utilized.
 
 ```json
+{
   "alias": {
-    "./node_modules/swagger-ui-react/index.js": "./node_modules/swagger-ui-react/commonjs.js",
-    "./node_modules/swagger-ui-react/swagger-ui-es-bundle-core.js": "./node_modules/swagger-ui/dist/swagger-ui.js"
+    "./node_modules/swagger-ui-react/index.mjs": "./node_modules/swagger-ui-react/index.cjs",
+    "$swagger-ui": "./node_modules/swagger-ui-react/swagger-ui.js"
   }
+}
 ```
 
 Using this setup we avoid using modern ESM distribution fragments and instead 
 fallback to CommonJS which consistently works with Parcel.js.
 
-## CSS
+## Support for package.json `exports` field
 
-**swagger-ui.css** contains single character that Parcel just don't like.
-We have to disable `@parcel/transformer-css` transformer to build successfully.
+Parcel.js doesn't support package.json [exports](https://nodejs.org/api/packages.html#package-entry-points) field [by default](https://parceljs.org/blog/v2-9-0/#new-resolver). It needs to be enabled
+explicitly. This can be done by adding the following to your project root package.json:
 
 ```json
 {
-  "extends": "@parcel/config-default",
-  "transformers": {
-    "*.{css,pcss}": [
-      "@parcel/transformer-postcss"
-    ]
+  "@parcel/resolver-default": {
+    "packageExports": true
   }
 }
 ```
