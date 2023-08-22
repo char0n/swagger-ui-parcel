@@ -33,9 +33,11 @@ To resolve the issue with the latest version of `swagger-ui@4.11.1`
 following Parcel.js alias needs to provided in `package.json`:
 
 ```json
+{
   "alias": {
     "./node_modules/swagger-ui/dist/swagger-ui-es-bundle-core.js": "./node_modules/swagger-ui/dist/swagger-ui.js"
   }
+}
 ```
 
 Using this setup we avoid using modern ESM distribution fragments and instead
@@ -50,22 +52,6 @@ explicitly. This can be done by adding the following to your project root packag
 {
   "@parcel/resolver-default": {
     "packageExports": true
-  }
-}
-```
-
-## CSS
-
-**swagger-ui.css** contains single character that Parcel just don't like.
-We have to disable `@parcel/transformer-css` transformer to build successfully.
-
-```json
-{
-  "extends": "@parcel/config-default",
-  "transformers": {
-    "*.{css,pcss}": [
-      "@parcel/transformer-postcss"
-    ]
   }
 }
 ```
