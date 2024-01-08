@@ -24,13 +24,13 @@
   "type": "module",
   "devDependencies": {
     "events": "^3.3.0",
-    "parcel": "^2.9.3",
+    "parcel": "^2.11.0",
     "stream-browserify": "^3.0.0"
   },
   "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "swagger-ui-react": "=5.4.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "swagger-ui-react": "5.11.0"
   },
   "@parcel/resolver-default": {
     "packageExports": true
